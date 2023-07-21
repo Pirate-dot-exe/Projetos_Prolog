@@ -137,7 +137,9 @@ avo_generic(X, Y) :- genitor(X, Z), genitor(Z, Y).
 avo_h(X, Y) :- homem(X), genitor(X, Z), genitor(Z, Y).
 avo_m(X, Y) :- mulher(X), genitor(X, Z), genitor(Z, Y).
 % Regras de geração D(3)
-bisavo_h(X, Y) :- homem(X), genitor(X, Z), avo_generic(Z, Y).
+bisavo_generic(X, Y) :- avo_generic(X, Z), genitor(Z, Y).
+bisavo_h(X, Y) :- homem(X), bisavo_generic(X,Y).
+bisavo_m(X, Y) :- mulher(X), bisavo_generic(X,Y).
 % Regra de ancestralidade 
 ancestral(X, Y, 1) :- genitor(X, Y).
 ancestral(X, Y, N) :- genitor(X, Z), ancestral(Z, Y, N1), N is N1 + 1.
