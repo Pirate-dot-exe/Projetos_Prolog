@@ -11,3 +11,11 @@ murilo leciona cgpdi dia [quarta, quinta] horario [[h1, h2], [h1, h2]].
 murilo leciona ia dia [quarta, sexta] horario [h5, h3].
 richard leciona pp dia [terça, quarta] horario [h5, h3].
 sandra leciona comp dia [segunda, quarta] horario [h4, h4].
+
+% Exemplos ------------------------------------------------------------
+% carlos leciona Oque dia Quando horario [h4, h3]
+% Quem leciona Oque dia [X, terça] horario H
+% murilo leciona Oque dia Dias horario [[h1, h2], X]
+
+% TO DO refatorar fatos, listas não é muito funcional da forma
+% que é usada
