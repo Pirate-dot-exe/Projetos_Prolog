@@ -1,9 +1,10 @@
 % Author: PirateX_20
 % Fonte: Fandom Simpsons
-% Versão 1.7
-% * Expansão de linhagem para a direita da linhagem principal (homens)
+% Versão 1.8
+% * Expansão de linhagem para a direita da linhagem principal (mulheres)
 % * Classificação de Linhagem
-% * Iniício da Documentação
+% * Definição de Casamentos até o momento
+
 %Homens--------------------------------------------------------------------
 % Linhagem 1
 homem(sven_simpson). %Primeiro Simpson??
@@ -47,24 +48,40 @@ homem(homer_simpson).
 % Linhagem 9
 homem(bartolomew_simpson).
 %Mulheres------------------------------------------------------------------
+% Linhagem 1
 mulher(claretta_ethridge).
+mulher(mary_flowring_cloud).
+% Linhagem 2
 mulher(winifred_running_goat).
+mulher(jane_nervous_goat).
+mulher(ettwanda_trownse).
+% Linhagem 3
 mulher(trixie_simpson).
 mulher(prudence_simpson).
 mulher(ivy_simpson).
 mulher(clowta_stillman).
-mulher(pipa_simpson).
+mulher(oglivie_stillman).
+% Linhagem 4
 mulher(gaby_crouse).
+mulher(pipa_simpson).
+mulher(edwina_forayter).
+mulher(nollie_ballwack).
+% Linhagem 5
 mulher(dulcine_simpson).
 mulher(happy_dinsdale).
+mulher(theodora_hutshing).
+% Linhagem 6
 mulher(twitta_simpson).
 mulher(elrita_simpson).
 mulher(bonita_simpson).
 mulher(yuma_hickman).
 mulher(linnea_erika).	% "Dolly" Mãe de Mona
+% Linhagem 7
 mulher(penelope_olsen).	% "Mona Simpson"
 mulher(kari_olsen).		% Irmã de Mona
+% Linhagem 8
 mulher(marge_bouvier).
+% Linhagem 9
 mulher(lisa_simpson).
 mulher(margaret_simpson).
 % Genitores Linha Simpson Principal----------------------------------------
@@ -90,8 +107,19 @@ genitor(marge_bouvier, bartolomew_simpson).
 genitor(marge_bouvier, lisa_simpson).
 genitor(marge_bouvier, margaret_simpson).	%"Maggie"
 % -----------------------------------------------------------------
-casados(homer_simpson, marge_bouvier).
+casados(sven_simpson, claretta_ethridge).
+% ??mary_frowning_cloud, joe_puffing_goat (Não exatamente casados)
+casados(pert_simpson, winifred_running_goat).
+casados(omar_stillman, ettwando_trowse).
+casados(garwood_simpson, clowta_stillman).
+casados(howland_simpson, gabby_crouse).
+casados(horatio_dinadale, edwina_forayter).
+casados(nollie_ballwack, bartman_hickman).
+casados(oswald_simpson, happy_dinedale).
+casados(willard_hickman, theodora_hushing).
+casados(deville_simpson, yuma_hickman).
 casados(abraham_simpson, penelope_olsen).
+casados(homer_simpson, marge_bouvier).
 % Regras de Produção -----------------------------------------------------
 %Regras de geração D(0)
 irmaos(X, Y) :- genitor(Z, X) , genitor(Z, Y).
@@ -113,7 +141,6 @@ bisavo_h(X, Y) :- homem(X), genitor(X, Z), avo_generic(Z, Y).
 % Regra de ancestralidade 
 ancestral(X, Y, 1) :- genitor(X, Y).
 ancestral(X, Y, N) :- genitor(X, Z), ancestral(Z, Y, N1), N is N1 + 1.
-
 % Exemplos de regra ------------------------------------------------------
 % ancestral(howland_simpson, homer_simpson, N)
 % irmaos(bartolomew_simpson, lisa_simpson)
