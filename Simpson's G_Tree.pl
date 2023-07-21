@@ -1,9 +1,7 @@
 % Author: PirateX_20
 % Fonte: Fandom Simpsons
-% Versão 1.8
-% * Expansão de linhagem para a direita da linhagem principal (mulheres)
-% * Classificação de Linhagem
-% * Definição de Casamentos até o momento
+% Versão 1.8.3
+% * Restruturação de regras e adição de sobrinho/sobrinha
 
 %Homens--------------------------------------------------------------------
 % Linhagem 1
@@ -123,11 +121,15 @@ casados(homer_simpson, marge_bouvier).
 % Regras de Produção -----------------------------------------------------
 %Regras de geração D(0)
 irmaos(X, Y) :- genitor(Z, X) , genitor(Z, Y).
+irma(X, Y) :- mulher(X), irmaos(X, Y).
+irmao(X, Y) :- homem(X), irmaos(X, Y).
 %Regras de geração D(1)
 pai(X, Y) :- homem(X) , genitor(X, Y).
 mae(X, Y) :- mulher(X), genitor(X, Y).
 tio(X, Y) :- homem(X) , irmaos(X, Z) , genitor(Z, Y).
 tia(X, Y) :- mulher(X) , irmaos(X, Z) , genitor(Z, Y).
+sobrinho(X, Y) :- ( tio(Y, X) ; tia(Y, X) ) , homem(X).
+sobrinha(X, Y) :- ( tio(Y, X) ; tia(Y, X) ) , mulher(X).
 sogra(X, Y) :- 
     mulher(X), genitor(X, Z), ( casados(Z, Y) ; casados(Y, Z) ).
 sogro(X, Y) :-
